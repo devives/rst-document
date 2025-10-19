@@ -125,7 +125,7 @@ public abstract class DirectiveAbst<CHILD extends RstElement> extends RstNodeAbs
         }
         if (content != null && !content.isEmpty()) {
             sb.append(getContentSeparator());
-            sb.append(StringUtils.endWithNL(StringUtils.shiftLeftEdge(content.trim(), 3)));
+            sb.append(StringUtils.endWithNL(StringUtils.shiftLeftEdge(content, 3)));
         }
         return sb.toString();
     }

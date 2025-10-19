@@ -33,6 +33,18 @@ public class TextTest {
     }
 
     @Test
+    public void serialize_MultilineString() throws Exception {
+        String result = new Text(
+                " import org.junit.jupiter.api.Test;\n" +
+                        " import org.openqa.selenium.chrome.ChromeDriver;\n" +
+                        " import org.openqa.selenium.remote.RemoteWebDriver;").serialize();
+        System.out.print(result);
+        Assertions.assertEquals(" import org.junit.jupiter.api.Test;\n" +
+                " import org.openqa.selenium.chrome.ChromeDriver;\n" +
+                " import org.openqa.selenium.remote.RemoteWebDriver;", result);
+    }
+
+    @Test
     public void serialize_ArrayList() throws Exception {
         String result = new Text(Arrays.toString(new String[0])).serialize();
         System.out.print(result);

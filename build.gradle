@@ -93,6 +93,7 @@ publishing {
                 artifactId = archivesBaseName
                 url = "https://github.com/devives/rst-document"
                 description = "ReStructuredText Document & Builder"
+                name = "Devive RST Document"
 
                 properties = [
                         "project.build.sourceEncoding": "UTF-8"
@@ -140,6 +141,14 @@ signing {
     sign publishing.publications.RstDoc
 }
 
+tasks.register("zip-for-central-sonatype", Zip) {
+    group("publishing")
+    dependsOn("publish")
+    setArchiveFileName( "$archivesBaseName-$version"+".zip")
+    from(layout.buildDirectory.dir("repo")){
+        exclude("**/maven-metadata.xml*")
+    }
+}
 
 test {
     useJUnitPlatform()
